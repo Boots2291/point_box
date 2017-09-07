@@ -17,4 +17,12 @@ describe "an admin visits their dashboard" do
     expect(page).to have_content("50")
     expect(page).to have_content("10")
   end
+  it "a normal user tries to visit" do
+    user = User.create(username: "user", password: "1234")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit admin_users_path
+
+    expect(page).to have_content("404")
+  end
 end
