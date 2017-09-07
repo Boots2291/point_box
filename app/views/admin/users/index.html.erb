@@ -1,0 +1,16 @@
+<h2>Admin Dashboard</h2>
+
+<h4>To view a user, click on their username. To edit their points, click on their points value</h4>
+
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Points</th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.username, admin_user_path(user.id) %></td>
+      <td><%= link_to user.points, edit_admin_user_path(user) %></td>
+    </tr>
+    <% end %>
+  </table>

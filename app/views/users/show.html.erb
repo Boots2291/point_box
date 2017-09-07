@@ -1,3 +1,9 @@
 Hi, <%= current_user.username %>
 
+You have <%= current_user.points %> points.
+
 <%= link_to "Logout", logout_path, method: :delete %>
+
+<% if current_user.admin? %>
+  <%= link_to "Admin Dashboard", admin_users_path %>
+<% end %>
