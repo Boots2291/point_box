@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    render file: "/public/404" unless current_user.id == @user.id
   end
 
   def update
