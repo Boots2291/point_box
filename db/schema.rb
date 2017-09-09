@@ -10,19 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907183056) do
+ActiveRecord::Schema.define(version: 20170908205641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "rewards", force: :cascade do |t|
+    t.string "name"
+    t.integer "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.integer "points", default: 0
     t.integer "redeemed_points", default: 0
   end
 
+  create_table "users_rewards", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "rewards_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rewards_id"], name: "index_users_rewards_on_rewards_id"
+    t.index ["user_id"], name: "index_users_rewards_on_user_id"
+  end
+
+  add_foreign_key "users_rewards", "rewards", column: "rewards_id"
+  add_foreign_key "users_rewards", "users"
 end
