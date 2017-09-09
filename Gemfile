@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -41,7 +43,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rack_session_access'
   gem 'pry'
-  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :development do
