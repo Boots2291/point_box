@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908205641) do
+ActiveRecord::Schema.define(version: 20170909150913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20170908205641) do
     t.integer "cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rewards_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "reward_id", null: false
+    t.index ["reward_id", "user_id"], name: "index_rewards_users_on_reward_id_and_user_id"
+    t.index ["user_id", "reward_id"], name: "index_rewards_users_on_user_id_and_reward_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,15 +39,4 @@ ActiveRecord::Schema.define(version: 20170908205641) do
     t.integer "redeemed_points", default: 0
   end
 
-  create_table "users_rewards", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "rewards_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rewards_id"], name: "index_users_rewards_on_rewards_id"
-    t.index ["user_id"], name: "index_users_rewards_on_user_id"
-  end
-
-  add_foreign_key "users_rewards", "rewards", column: "rewards_id"
-  add_foreign_key "users_rewards", "users"
 end

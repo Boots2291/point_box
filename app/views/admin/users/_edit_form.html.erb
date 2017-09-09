@@ -1,0 +1,12 @@
+<%= form_for([:admin, @user]) do |f| %>
+  <div class="form_group">
+    <%= f.label :points %>
+    <%= f.number_field :points %>
+  </div>
+  <div class="form_group">
+    <%= f.label :admin %>
+    <%= f.radio_button :admin, current_user.admin? %>
+  </div>
+
+  <%= f.submit class: "btn btn-success" %>
+<% end %>

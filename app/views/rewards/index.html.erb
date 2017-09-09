@@ -1,0 +1,16 @@
+<h2>Rewards</h2>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Cost</th>
+    <th>Purchase</th>
+  </tr>
+  <% @rewards.each do |reward| %>
+  <tr>
+    <td><%= reward.name %></td>
+    <td><%= reward.cost %></td>
+    <td><%= link_to "Buy", buy_path(reward_id: reward.id), class: "btn btn-primary", method: :get %></td>
+  </tr>
+  <% end %>
+</table>

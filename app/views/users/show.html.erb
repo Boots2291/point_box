@@ -1,3 +1,11 @@
 Hi, <%= current_user.username %>
 
 You have <%= current_user.points %> points.
+
+<h4>Rewards</h4>
+
+<% @rewards.each do |reward| %>
+  <div class="reward">
+    <%= reward.name %>
+  </div>
+<% end %>

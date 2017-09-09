@@ -29,7 +29,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(points: params[:user][:points])
+    @user.update(points: params[:user][:points], admin: params[:user][:admin])
 
     redirect_to admin_users_path
   end

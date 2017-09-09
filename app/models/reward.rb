@@ -1,6 +1,5 @@
 class Reward < ApplicationRecord
-  has_many :users_rewards
-  has_many :users, through: :users_rewards
+  has_and_belongs_to_many :users
 
   validates :name, presence: true, uniqueness: true
   validates :cost, presence: true

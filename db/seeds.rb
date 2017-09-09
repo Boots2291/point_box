@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-admin = User.create(username: "admin", password: "1234")
+admin = User.create(username: "admin", password: "1234", admin: true)
 puts "Created #{admin}"
 
 5.times do
