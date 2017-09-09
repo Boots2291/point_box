@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Link</a></li>
+        <li><%= link_to "Rewards", rewards_path %></li>
         <li><%= link_to "Admin Dashboard", admin_users_path if current_user && current_user.admin? %></li>
 
       </ul>

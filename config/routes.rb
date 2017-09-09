@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :rewards, only: [:index]
   namespace :admin do
     resources :users, only: [:index, :new, :create, :show, :edit, :update]
   end
