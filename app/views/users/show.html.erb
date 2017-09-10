@@ -1,6 +1,9 @@
-Hi, <%= current_user.username %>
+<h4>Hi, <%= current_user.username %></h4>
 
-You have <%= current_user.points %> points.
+<p>You have <%= current_user.points %> points!</p>
+<% if current_user.redeemed_points > 0 %>
+  <p>You have redeemed <%= current_user.redeemed_points %> points.</p>
+<% end %>
 
 <h4>Rewards</h4>
 
@@ -9,3 +12,4 @@ You have <%= current_user.points %> points.
     <%= reward.name %>
   </div>
 <% end %>
+

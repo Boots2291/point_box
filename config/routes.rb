@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :rewards, only: [:index]
   namespace :admin do
     resources :users, only: [:index, :new, :create, :show, :edit, :update]
+    resources :rewards, only: [:new, :create, :edit, :update, :destroy]
   end
   get "login", to: 'sessions#new'
   post "login", to: 'sessions#create'

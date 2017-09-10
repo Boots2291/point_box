@@ -1,16 +1,26 @@
 <h2>Rewards</h2>
 
+<%= button_to "Create new reward", new_admin_reward_path, method: :get if current_user && current_user.admin? %>
+
 <table class="table table-striped">
   <tr>
     <th>Name</th>
     <th>Cost</th>
     <th>Purchase</th>
+    <% if current_user && current_user.admin? %>
+      <th>Edit</th>
+      <th>Delete</th>
+    <% end %>
   </tr>
   <% @rewards.each do |reward| %>
   <tr>
     <td><%= reward.name %></td>
     <td><%= reward.cost %></td>
     <td><%= link_to "Buy", buy_path(reward_id: reward.id), class: "btn btn-primary", method: :get %></td>
+    <% if current_user && current_user.admin? %>
+      <td><%= button_to "Edit", edit_admin_reward_path(id: reward.id), method: :get %></td>
+      <td><%= button_to "Delete", admin_reward_path(id: reward.id), method: :delete %></td>
+    <% end %>
   </tr>
   <% end %>
 </table>
