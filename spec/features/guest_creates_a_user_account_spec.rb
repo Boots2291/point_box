@@ -26,7 +26,8 @@ RSpec.describe "guest becomes a user" do
 
       expect(page).to have_link("Login")
 
-      click_on "Login"
+      expect(page).to have_css(".login")
+      first(".login").click
 
       expect(current_path).to eq(login_path)
 
